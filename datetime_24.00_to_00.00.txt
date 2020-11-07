@@ -1,0 +1,88 @@
+
+#XVWCO
+
+stringdata = '01-01-2020 17:00'
+
+
+
+
+
+#Change format to date time
+from datetime import date
+
+#  datetime.strptime(date_string, format)
+
+stringdata = '01-01-2020'
+newdate = datetime.datetime.strptime(stringdata, '%d-%m-%Y')
+print(newdate)
+print("-------------")
+print('Day:',newdate.day)
+print('Month:',newdate.month)
+print('Year:', newdate.year)
+
+
+
+#ESPAÑOL
+#Cambiar de una cadena de texto a un tipo de dato fecha
+
+#datetime.strptime(cadena_de_texto, formato_fecha)
+
+cadenatexto = '01-01-2020'
+nuevafecha = datetime.datetime.strptime(cadenatexto, '%d-%m-%Y')
+print(nuevafecha)
+print("-------------")
+print('Day:',nuevafecha.day)
+print('Month:',nuevafecha.month)
+print('Year:', nuevafecha.year)
+
+
+#---------------------------------------------------------------------
+
+#My time
+x = datetime.datetime.now()
+print(x)
+
+#-------------------------------------------------
+
+stringdata2 ='01-01-2020 24:00'
+
+newdate = datetime.datetime.strptime(stringdata2, '%d-%m-%Y %H:%M')
+print(newdate)
+#--------------------------------------------------------------------
+#Problems with format 24:00
+#---------------------------------------------------------------------------
+#ValueError                                Traceback (most recent call last)
+#<ipython-input-33-169506dbed75> in <module>
+#      2 stringdata2 ='01-01-2020 24:00'
+#      3 
+#----> 4 newdate = datetime.datetime.strptime(stringdata2, '%d-%m-%Y %H:%M')
+#      5 print(newdate)
+#
+#~\anaconda3\envs\rueditas\lib\_strptime.py in _strptime_datetime(cls, data_string, format)
+#    566     """Return a class cls instance based on the input string and the
+#    567     format string."""
+#--> 568     tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+#    569     tzname, gmtoff = tt[-2:]
+#    570     args = tt[:6] + (fraction,)
+#
+#~\anaconda3\envs\rueditas\lib\_strptime.py in _strptime(data_string, format)
+#    347     found = format_regex.match(data_string)
+#    348     if not found:
+#--> 349         raise ValueError("time data %r does not match format %r" %
+#    350                          (data_string, format))
+#    351     if len(data_string) != found.end():
+#
+#ValueError: time data '01-01-2020 24:00' does not match format '%d-%m-%Y %H:%M'
+
+
+
+
+
+#Solution: Change 24:00 with 00:00
+
+#Problems with format
+stringdata2 ='01-01-2020 00:00'
+
+newdate = datetime.datetime.strptime(stringdata2, '%d-%m-%Y %H:%M')
+print(newdate)
+
